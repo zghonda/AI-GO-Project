@@ -570,4 +570,4 @@ class Backgammon(StochasticGame):
 
     def probability(self, chance):
         """Return the probability of occurence of a dice roll."""
-return 1/36 if chance[0] == chance[1] else 1/18
+        return 1/36 if chance[0] == chance[1] else 1/18

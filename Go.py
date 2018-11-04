@@ -39,7 +39,7 @@ class Game:
                     if self.is_in_captured_group(state.board, i, j):
                         if state.board[i][j] == player: return -1
                         return 1
-        return 99
+        return self.evalfn(state, player)
 
     def check_if_draw(self, state):
         '''' Returns True or False whether it's a draw '''
@@ -94,12 +94,8 @@ class Game:
             board.append(list(map(lambda char: int(char), list(filter(lambda c: c != '\n', list(line))))))
 
         moves = self.generate_moves(board)
-        print(moves)
         moves = self.remove_suicide(deepcopy(board), moves, current_player)
-        print(moves)
         file.close()
-        # Put terminal_test in print
-        # print(self.terminal_test(self.result(self, state, (1, 1, '1'))))
 
         return self.state(board, current_player, moves)
 
@@ -157,7 +153,6 @@ class Game:
         return len(self.get_liberties(board, i, j)) == 0
 
     def is_suicide(self, board, action):
-        # list are not immutable, solution has to be improved for esthetic reasons
         temp_board = deepcopy(board)
         p, i, j = (action[0], self.shift_to_computer(action[1]), self.shift_to_computer(action[2]))
         temp_board[i][j] = p

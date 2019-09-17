@@ -1,3 +1,3 @@
 # Artificial-Intelligence-course-
 
-first project for the AI course 
+First project for the AI course in Insituto Superior Tecnico 
